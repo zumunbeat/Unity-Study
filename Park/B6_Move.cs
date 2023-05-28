@@ -27,10 +27,10 @@ public class B6_Move : MonoBehaviour
         }
     }
     */
-    void Update(){
+    void Update(){//deltatime = 프레임이 많으면 작고 적으면 큼
         Vector3 vec = new Vector3(
-            Input.GetAxis("Horizontal")*0.1f,
-            Input.GetAxis("Vertical")*0.1f,
+            Input.GetAxis("Horizontal")* Time.deltatime*0.1f,
+            Input.GetAxis("Vertical")* Time.deltatime*0.1f,
             0);//이동값 지정
         transform.Translate(vec);
         //Translate = 이동, Vector3 = 3차원벡터

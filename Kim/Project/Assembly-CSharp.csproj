@@ -37,9 +37,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\NewBehaviourScript.cs" />
-     <Compile Include="Assets\Script\MovingSphere.cs" />
-     <Compile Include="Assets\Script\OtherBall.cs" />
      <Compile Include="Assets\Script\MovingObject.cs" />
+     <Compile Include="Assets\Script\OtherBall.cs" />
+     <Compile Include="Assets\Script\MovingSphere.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.22f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

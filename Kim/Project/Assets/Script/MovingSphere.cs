@@ -42,6 +42,9 @@ public class MovingSphere : MonoBehaviour
         if(other.name=="Cube")
             rigid.AddForce(Vector3.up*50,ForceMode.Impulse);
     }
+    public void Jump(){
+        rigid.AddForce(Vector3.up*100,ForceMode.Impulse);
+    }
     void Update(){
         
     }

@@ -1,1 +1,29 @@
+이번 시간에는 물체에게 힘(외부력)을 적용시켜서 움직이는 것을 해보자.
+이번 시간에는 RigidBody에 집중해야한다. 
+CS Script를 생성해서 함수를 생성한뒤 조작하면서 실행해보도록 하자.
+Rigidbody rigid;
+요소를 가져올건데 <T>안의 요소를 가져올거다. 이걸 Generic이라 한다.
+즉, rigid라는 변수안에 Rigidbody안에 있는 요소를 가져온다는 말이 된다.
 
+rigid.velocity = Vector3.right;//velocity는 현재 속도를 말하고 이를 오른쪽으로 가게하겠다는 의미가 된다.
+
+rigid.velocity = new Vector3(2,4,3);
+얘는 호출되면 물체를 그 속도가 되도록 퍽 쳐준다고 생각하면 된다.
+그래서 만약 얘가 업데이트로 가면 무한히 저 방향으로 치기 때문에 물체는 일정한 속도로 날아간다.
+그리고 무엇보다 Rigidbody에 관련된 (물리현상) 코드는 Update가 아니라 FixedUpdate에서 호출하는 것을 권장한다.
+
+rigid.AddForce(Vector3.up*50,ForceMode.Impulse);
+AddForce(Vec): Vec의 방향으로 힘을 준다.->무게가 크면 더 많은 힘이 필요하다.
+ForceMode: 힘을 주는 방식(가속(Accelation),무게반영(Impulse))
+얘는 케릭터에게 점프하는 경우에 많이 사용하는데 FixedUpdate에 
+if(Input.GetButtonDown("Jump")){
+    rigid.AddForce(Vector3.up*50,ForceMode.Impulse);
+}
+로 쓰면 유저로부터 Jump를 누른 경우 점프한다가 된다.
+GetAxisRaw를 통해 원하는 방향으로 이동을 하게 만들 수도 있다.
+Vector3 vec=new Vector3.(Input.GetAxisRaw("Horizontal")),0,Input.GetAxisRaw("Vertical"));
+rigid.AddForce(vec,ForceMode.Impulse); 라고 써주면 유저가 입력한 방향키에 따라 움직이는 물체를 만들 수 있다.
+
+그리고 회전력을 줄 수도 있는데,
+rigid.AddTorque(Vector3.up or 좌표)
+그러면 Vector3뒤에 오는 좌표를 축으로 빙글빙글 돌게 된다.

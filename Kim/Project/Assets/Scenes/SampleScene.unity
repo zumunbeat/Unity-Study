@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 247115434}
   - component: {fileID: 247115433}
   - component: {fileID: 247115432}
+  - component: {fileID: 247115437}
   m_Layer: 0
   m_Name: Sphere (3)
   m_TagString: Untagged
@@ -306,7 +307,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b2896c76bdd64504f9977bbc3d670feb, type: 2}
+  - {fileID: 2100000, guid: 7409bc729eddcb84496a8ddd02b02193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -351,6 +352,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &247115437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247115431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6703212de2bbbf45971173c42deed73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &368657230
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +377,7 @@ GameObject:
   - component: {fileID: 368657233}
   - component: {fileID: 368657232}
   - component: {fileID: 368657231}
+  - component: {fileID: 368657236}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
@@ -420,7 +434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b2896c76bdd64504f9977bbc3d670feb, type: 2}
+  - {fileID: 2100000, guid: 7409bc729eddcb84496a8ddd02b02193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -465,6 +479,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &368657236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368657230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6703212de2bbbf45971173c42deed73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &514233079
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +504,7 @@ GameObject:
   - component: {fileID: 514233082}
   - component: {fileID: 514233081}
   - component: {fileID: 514233080}
+  - component: {fileID: 514233085}
   m_Layer: 0
   m_Name: Sphere (5)
   m_TagString: Untagged
@@ -534,7 +561,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b2896c76bdd64504f9977bbc3d670feb, type: 2}
+  - {fileID: 2100000, guid: 7409bc729eddcb84496a8ddd02b02193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -579,6 +606,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &514233085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514233079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6703212de2bbbf45971173c42deed73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +924,7 @@ GameObject:
   - component: {fileID: 1063406127}
   - component: {fileID: 1063406126}
   - component: {fileID: 1063406125}
+  - component: {fileID: 1063406130}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -941,7 +981,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b2896c76bdd64504f9977bbc3d670feb, type: 2}
+  - {fileID: 2100000, guid: 7409bc729eddcb84496a8ddd02b02193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -986,6 +1026,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1063406130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063406124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6703212de2bbbf45971173c42deed73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1299712354
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1051,7 @@ GameObject:
   - component: {fileID: 1299712357}
   - component: {fileID: 1299712356}
   - component: {fileID: 1299712355}
+  - component: {fileID: 1299712360}
   m_Layer: 0
   m_Name: Sphere (4)
   m_TagString: Untagged
@@ -1055,7 +1108,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b2896c76bdd64504f9977bbc3d670feb, type: 2}
+  - {fileID: 2100000, guid: 7409bc729eddcb84496a8ddd02b02193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1100,6 +1153,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1299712360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299712354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6703212de2bbbf45971173c42deed73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2111648792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,7 +1180,7 @@ GameObject:
   - component: {fileID: 2111648797}
   - component: {fileID: 2111648798}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: My ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1129,7 +1194,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111648792}
   m_Material: {fileID: 13400000, guid: 434f9e25475eebe409e80915d3b1377c, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

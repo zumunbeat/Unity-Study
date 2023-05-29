@@ -25,21 +25,25 @@ public class MovingSphere : MonoBehaviour
     }
     void FixedUpdate(){
         //힘을 가하기
-        //if(Input.GetButtonDown("Jump")){
-        //    rigid.AddForce(Vector3.up*50,ForceMode.Impulse);
-        //}
+        if(Input.GetButtonDown("Jump")){
+            rigid.AddForce(Vector3.up*50,ForceMode.Impulse);
+        }
         //이런식으로 점프도 가능하고, GetAxisRaw를 통해 원하는 방향으로 이동을 하게 만들 수도 있다.
-        //Vector3 vec=new Vector3.(Input.GetAxisRaw("Horizontal")),0,Input.GetAxisRaw("Vertical"));
-        //rigid.AddForce(vec,ForceMode.Impulse);
+        Vector3 vec=new Vector3(Input.GetAxisRaw("Horizontal"), 0 ,Input.GetAxisRaw("Vertical"));
+        rigid.AddForce(vec,ForceMode.Impulse);
         //2.회전력
-        rigid.AddTorque(Vector3.back);
-        rigid.AddTorque(Vector3.up);
+        //rigid.AddTorque(Vector3.back);
+        //rigid.AddTorque(Vector3.up);
         //Vector3다음에 오는 벡터를 중심축으로 돌게 된다.
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    private void OnTriggerStay(Collider other){//Collsion이 아닌 이유는 얘는 충돌을 보는게 아니라 그냥 겹쳤냐 안겹쳤냐를 보기때문에 hitbox를 관장하는 Collider를 가져온다.
+        if(other.name=="Cube")
+            rigid.AddForce(Vector3.up*50,ForceMode.Impulse);
+    }
+    void Update(){
         
     }
+
 }

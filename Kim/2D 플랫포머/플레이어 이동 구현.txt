@@ -1,0 +1,84 @@
+그러면 이제 player의 이동을 구현해보도록하자
+새로운 스크립트를 만들어주자.
+private Rigidbody2D rigid;
+
+void Start(){ rigid=GetComponent<Rigidbody2D>();}
+
+void FixedUpdate(){ float h=Input.GetAxisRaw("Horizontal");
+rigid.AddForce(Vector2.right*h,ForceMode2D.Impulse);}
+로 하면 rigidbody를 가져와서 좌,우 방향키를 입력받아 그 방향으로 움직이게 해준다는 의미의 코드이다.
+
+근데 문제가 FixedUpdate는 1초에 50번정도 실행된다.
+그러면 1초에 50번 그 방향으로 힘을 준다는 의미가 된다. 
+-> 딱 봐도 문제점이다.
+따라서 플레이어의 가속에 제한치를 줘야한다.
+public float maxSpeed;
+private Rigidbody2D rigid;
+
+void Start(){ rigid=GetComponent<Rigidbody2D>();}
+
+void FixedUpdate(){ float h=Input.GetAxisRaw("Horizontal");
+rigid.AddForce(Vector2.right*h,ForceMode2D.Impulse);
+if(rigid.velocity.x > maxSpeed) #Right
+rigid.velocity= new Vector2(maxSpeed,rigid.velocity.y);}
+else if(rigid.velocity.x < maxSpeed*(-1)) #Left
+rigid.velocity= new Vector2(maxSpeed*(-1),rigid.velocity.y);}
+
+그리고 2D관련 요소들은 Asset Create 2D를 열면 있다.
+여기에는 물체의 물리적 재질을 결정하는 Physics material 2D도 존재한다.
+#rigidbody2D에서 LinearDrag는 공기저항을 의미한다.
+
+알다시피 FixedUpdate는 지속적으로 같은 frame값을 보장한다. 
+따라서 지속적인 키 입력을 여기에 두는 경우가 많고
+단발적인 키입력은 Update에 설정해주는 경우가 많다.
+(FixedUpdate에서는 키입력이 씹히는 경우가 있음)
+
+void Update()
+    {
+        //보통 키의 단발적인 입력은 여기서 받는 경우가 많다.
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            //normalized는 단위벡터를 뜻한다.(순수 방향)
+            rigid.velocity = new Vector2(rigid.velocity.normalized.x  *0.5f, rigid.velocity.y);
+        }
+    }
+이러면 버튼에서 손이 때지면 속도가 바뀌게된다.
+그리고 Rigidbody2D에서 Constraints옵션에서 Freeze를 선택하면 물체의 움직임방향/회전의 유무를 결정할 수 있다. 
+그럼 이제 플레이어가 움직일 때 걷는 애니메이션이 나오게 바꿔보도록 하자.
+spriteRenderer설정을 보면 Flip이라는 기능이 있는데, 이건 sprite를 축을 기준으로 반전 시켜주는 것이다.
+
+private SpriteRenderer spriteRenderer;
+start문에 
+spriteRenderer = GetComponent<SpriteRenderer>();
+Update문에
+ if (Input.GetButtonDown("Horizontal"))
+        {
+            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+        }
+을 추가시켜주면 된다.
+그리고 애니메이션을 바꾸려면 Animator에서 기본 상태인 state에 우클릭 후 
+make transition 클릭 후 이어주면 된다.
+그 뒤에 parameter로 가서 +를 눌러준다. 그리고 bool값을 클릭하고 애니메이션을 이어주는 선을 클릭하자.그리고 제일 아래의 condition에서 상태값을 바꿔주도록 하자.
+그리고 Has Exit Time은 얘가 상태가 끝나도 애니메이션이 다 재생되지않았다면 다 재생한 뒤 처음으로 돌아간다는 의미의 옵션이다. 그리고 돌아오는 루트도 이어주도록 하자.
+그 뒤에 Script에 가서 편집을 하도록 하자.
+private Animator anim;
+anim = GetComponent<Animator>();
+if (rigid.velocity.normalized.x == 0)
+        {
+            anim.SetBool("isWalking", false);
+        }
+        else
+        {
+            anim.SetBool("isWalking", true);
+        }
+라고 넣어주면 된다.
+일정 속도 이하에서 멈추는 애니메이션을 출력하는 경우
+if (Mathf.Abs(rigid.velocity.x) < 0.3)//Mathf:수학 관련 함수
+        {
+            anim.SetBool("Iswalking", false);
+        }
+        else
+        {
+            anim.SetBool("Iswalking", true);
+        }
+라고 해주면 된다.

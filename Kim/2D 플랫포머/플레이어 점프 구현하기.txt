@@ -21,7 +21,7 @@ animation insepctor에서 loop를 해제해주고 그런 과정은 같지만,
 FixedUpdate부분에
 Debug.DrawRay(rigid.position,Vector3.down,new Color(0,1,0));을 하고 실행하면 플레이어 아래에 연두색 줄이 있는것을 확인할 수 있다.
 
-RaycastHit2D rayHit=Physics2D.Raycats(rigid.position,Vector3.down,1);
+RaycastHit2D rayHit=Physics2D.Raycast(rigid.position,Vector3.down,1);
 Ray를 쏴서 맞은 대상을 rayHit이라는 객체에 집어넣는다.
  if(rayHit.collider != null){
 RayCastHit변수의 콜라이더로 검색 확인 가능하다.

@@ -1,1 +1,57 @@
 자 이제 몬스터의 행동 패턴을 구현해보도록 하자.
+우선 
+Rigidbody2D rigid;
+//외부력을 위해서 rigid받고
+public int nextMove;//행동지표를 결정할 변수를 하나 설정
+Animator anim;
+//animation조종해야되니까 얘도 받고
+SpriteRenderer spriteRenderer;
+//Flip구현을 위해서 얘도 받아주자.
+rigid=GetComponent<Rigidbody2D>();
+anim=GetComponent<Animator>();
+spriteRenderer=GetComponent<SpriteRenderer>();
+받아주고
+
+적의 유동적인 움직임을 만드려면 움직임을 랜덤으로서 받으면 된다.
+void Think(){
+	nextMove=Random.Range(-1,2);
+	float nextThinkTime=Random.Range(2f,5f);
+	Invoke("Think",nextThinkTime);
+}라는 함수를 따로 만들어주자.
+여기서 Invoke는 자체적으로 동작시간을 결정해주는 것이다.
+왜냐하면 그냥 재귀함수로 만들면 얘의 반복주기가 너무 짧아져서 너무 많이 호출된다는 문제가 있다.
+그리고 이렇게 재귀함수의 경우에는 마지막에 써주는게 좋다.
+
+Awake영역에 Think();
+Invoke("Think",5);//주어진 시간이 지난뒤,지정된 함수를 실행하는 함수를 넣어주도록 하자.
+그리고 FixedUpdate영역에 rigid.velocity=new Vector2(nextMove,rigid.velocity.y)를 넣어주자.
+
+여기서 문제는 낭떠러지를 만나면 그냥 떨어진다는 사실인데 이를 보충하기 위해서 몬스터의 앞에 ray를 쏴서 낭떠러지라면 방향을 바꿔주도록 하자.
+Vector2 frontVec=new Vector2(rigid.position.x+nextMove*0.3f,rigid.position.y)
+몬스터의 앞부분의 좌표를 받는다.
+Debug.DrawRay(frontVec,Vector3.down,new Color(0,1,0));
+몬스터 앞부분에 ray를 아래에서 쏜다.
+RaycastHit2D rayHit= Physics2D.Raycast(frontVec,Vector3.down,1,LayerMask.GetMask("땅"));
+레이어가 땅이면 true를 얻는 rayHit을 얻는다.(탐지거리는 1이고 아래에서부터 탐색한다)
+if(rayHit.collider==null){
+	Turn();
+}
+
+이제 애니메이션과 flip기능을 추가해주자.
+//Sprite Animation
+Think함수에 anim.SetInteger("걷는 속도",nextMove);
+//Flip Sprite
+ if(nextMove!=0){
+      spriteRenderer.flipX = nextMove==1;
+ }
+
+그리고 Turn함수를 구현하자면
+void Turn(){
+	nextMove *=-1;
+	spriteRenderer.flipX=nextMove==1;
+	
+	CancelInvoke(); //현재 작동중인 Invoke함수를 멈춘다.
+	Invoke("Think",2);
+}
+이런식으로 구성된다.
+

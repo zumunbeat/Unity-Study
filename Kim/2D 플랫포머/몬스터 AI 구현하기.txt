@@ -27,7 +27,7 @@ Invoke("Think",5);//주어진 시간이 지난뒤,지정된 함수를 실행하�
 그리고 FixedUpdate영역에 rigid.velocity=new Vector2(nextMove,rigid.velocity.y)를 넣어주자.
 
 여기서 문제는 낭떠러지를 만나면 그냥 떨어진다는 사실인데 이를 보충하기 위해서 몬스터의 앞에 ray를 쏴서 낭떠러지라면 방향을 바꿔주도록 하자.
-Vector2 frontVec=new Vector2(rigid.position.x+nextMove*0.3f,rigid.position.y)
+Vector2 frontVec=new Vector2(rigid.position.x+nextMove*0.3f,rigid.position.y)	
 몬스터의 앞부분의 좌표를 받는다.
 Debug.DrawRay(frontVec,Vector3.down,new Color(0,1,0));
 몬스터 앞부분에 ray를 아래에서 쏜다.

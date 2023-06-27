@@ -1,0 +1,22 @@
+//Jump
+        if (Input.GetButtonDown("Jump")&& !anim.GetBool("IsJumping")){
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            anim.SetBool("IsJumping",true);
+            Debug.Log("Jump");
+        }
+
+//Landing Platform
+        Debug.DrawRay(rigid.position, Vector3.down, new Color(0,1,0));
+
+        RaycastHit2D rayhit = Physics2D.Raycast(rigid.position, Vector2.down, 1, LayerMask.GetMask("platform"));
+//레이어 마스크를 사용하기 위해 인스펙터에서 레이어 설정 하여야 함
+        if(rigid.velocity.y < 0){
+            if(rayhit.collider !=null){
+                if(rayhit.distance < 0.5f){
+                    Debug.Log("aa");
+                    anim.SetBool("IsJumping",false);
+                }
+            }
+        }
+
+
